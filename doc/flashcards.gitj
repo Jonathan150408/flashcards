@@ -2,7 +2,80 @@
   "repoUrl": "https://github.com/Jonathan150408/flashcards",
   "projectName": "flashcards",
   "branch": "main",
-  "me": "jonathan150408",
+  "me": "Jonathan150408",
   "journalStartDate": "2026-01-14T11:20:00.000Z",
-  "exceptions": []
+  "exceptions": [
+    {
+      "id": "32f43a49-6ef8-4343-b729-7c5ef1f89919",
+      "type": "commitless",
+      "name": "learn(projet P_Bulle dev) : introduction au projet et aux outils",
+      "description": "Introduction du cahier des charges, spécification des attentes. Parler du contenu du projet et de la manière de travailler.",
+      "date": "2026-01-14T14:28:00.000Z",
+      "duration": 105,
+      "status": "Done",
+      "author": "Jonathan150408"
+    },
+    {
+      "id": "14207d51-ced1-4e8b-ac86-c40afb7fb991",
+      "type": "commitless",
+      "name": "feat(ReadMe) : ajout des chapitres",
+      "description": "",
+      "date": "2026-01-14T14:29:00.000Z",
+      "duration": 10,
+      "status": "Done",
+      "author": "Jonathan150408"
+    },
+    {
+      "sha": "4b54d7840e1984274e7a5a41d2e845887a8a7e40",
+      "excluded": true
+    },
+    {
+      "sha": "b06a87bdd8a265dd11a786e6026188720b8c2eaa",
+      "excluded": true
+    },
+    {
+      "sha": "8e266d131f3a703fa76a6c0c07b1c3659ec5b2bf",
+      "excluded": true
+    },
+    {
+      "id": "addeb656-3d3e-4345-943c-479cae53c53a",
+      "type": "commitless",
+      "name": "learn(CdC) : relecture du CdC et signature",
+      "description": "Lire et signer le CdC",
+      "date": "2026-01-14T14:31:00.000Z",
+      "duration": 10,
+      "status": "Done",
+      "author": "Jonathan150408"
+    },
+    {
+      "id": "55c827e2-6cd7-4a36-a0d6-7f043abe703d",
+      "type": "commitless",
+      "name": "feat(GitJournal) : initialisation",
+      "description": "Ajout du journal au repo",
+      "date": "2026-01-14T14:31:00.000Z",
+      "duration": 10,
+      "status": "Done",
+      "author": "Jonathan150408"
+    },
+    {
+      "id": "29137655-2106-4b90-837a-169f7e380908",
+      "type": "commitless",
+      "name": "fix(GitJournal) : tenter de réparer le gitjournal",
+      "description": "-> commit et recommit pour pouvoir tester (sans résultats)\r\n-> ajout du token (il aurait été apprécié de trouver de la doc plus facilement)\r\n-> création d'un nouveau token\r\n-> demande d'aide auprès d'une personne ayant réussi",
+      "date": "2026-01-14T14:32:00.000Z",
+      "duration": 25,
+      "status": "WIP",
+      "author": "Jonathan150408"
+    },
+    {
+      "id": "46738c86-b9cf-4934-b52d-350ef3834835",
+      "type": "commitless",
+      "name": "chore(invitation) :inviter l'enseignant sur le repo",
+      "description": "",
+      "date": "2026-01-14T14:35:00.000Z",
+      "duration": 5,
+      "status": "Done",
+      "author": "Jonathan150408"
+    }
+  ]
 }
