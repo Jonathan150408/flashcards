@@ -86,6 +86,19 @@
       "duration": 10,
       "status": "Done",
       "author": "Jonathan150408"
+    },
+    {
+      "id": "d91bd937-f94e-4da3-8ebd-fea951fa0cfa",
+      "type": "commitpatch",
+      "sha": "d72e09cfb5dd34294d33645d919c505c837155ef",
+      "url": "https://github.com/Jonathan150408/flashcards/commit/d72e09cfb5dd34294d33645d919c505c837155ef",
+      "name": "chore(step 0) : compléter l'étape 0",
+      "description": "Créer le projet app-teachers-adonisjs et ajouter les extension à VSCode",
+      "date": "2026-01-14T15:21:00.000Z",
+      "duration": 10,
+      "status": "Done",
+      "author": "Jonathan150408",
+      "patch": true
     }
   ]
 }
