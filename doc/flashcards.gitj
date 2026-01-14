@@ -76,6 +76,16 @@
       "duration": 5,
       "status": "Done",
       "author": "Jonathan150408"
+    },
+    {
+      "id": "d2e82ac9-7c57-44b3-8d22-94d8f0e65a9d",
+      "type": "commitless",
+      "name": "doc(GitJournal) : mettre le JDT à jour",
+      "description": "mise à jour du jdt avec toutes les entrées non-enregistrées",
+      "date": "2026-01-14T14:39:00.000Z",
+      "duration": 10,
+      "status": "Done",
+      "author": "Jonathan150408"
     }
   ]
 }
