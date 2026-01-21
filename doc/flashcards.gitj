@@ -139,6 +139,16 @@
       "duration": 85,
       "status": "Done",
       "author": "Jonathan150408"
+    },
+    {
+      "id": "dc970954-4e78-4758-941a-11ee19821e99",
+      "type": "commitless",
+      "name": "learn(eval pm2etml) : parenthèse sur le nouveau système d'éval",
+      "description": "",
+      "date": "2026-01-21T15:02:00.000Z",
+      "duration": 5,
+      "status": "Done",
+      "author": "Jonathan150408"
     }
   ]
 }
