@@ -99,6 +99,36 @@
       "status": "Done",
       "author": "Jonathan150408",
       "patch": true
+    },
+    {
+      "id": "0bede13a-ebde-483f-8c99-24d82228bdb0",
+      "type": "commitless",
+      "name": "chore(explications) : rappel des objectifs en classe",
+      "description": "",
+      "date": "2026-01-21T11:31:00.000Z",
+      "duration": 10,
+      "status": "Done",
+      "author": "Jonathan150408"
+    },
+    {
+      "id": "046de940-8e32-45c5-b8bd-b0785d13058b",
+      "type": "commitless",
+      "name": "chore(toolset) : installer le programme",
+      "description": "cela a pris du temps car cette tâche comprend \"repasser sur les étapes précédentes afin d'être certain de ne pas avoir manqué de config en déinstallant visual studio code\"",
+      "date": "2026-01-21T12:02:00.000Z",
+      "duration": 30,
+      "status": "Done",
+      "author": "Jonathan150408"
+    },
+    {
+      "id": "96a95dab-1785-4e3d-b7ed-515a133ceb9a",
+      "type": "commitless",
+      "name": "chore(application-surnoms-version-statique) : fork du repo",
+      "description": "Fork du repo afin de récupérer le code, demandé dans la step 1",
+      "date": "2026-01-21T12:13:00.000Z",
+      "duration": 5,
+      "status": "Done",
+      "author": "Jonathan150408"
     }
   ]
 }
