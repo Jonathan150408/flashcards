@@ -1,26 +1,27 @@
 import Section from '#models/section'
 import type { HttpContext } from '@adonisjs/core/http'
+import { dd } from '@adonisjs/core/services/dumper'
 
 export default class SectionsController {
   /**
    * Display a list of resource
    */
   async index({ view }: HttpContext) {
-    //
-    // Récupérer la liste des enseignants triés par ordre alphabétique sur le nom et le prénom
-    const sections = await Section.query()
-    //.orderBy('name', 'asc')
+    // Récupérer la liste des sections triées par ordre alphabétique sur le nom
+    const sections = await Section.query().orderBy('name', 'asc')
+
+    //test pour voir les valeurs
+    //dd(sections)
 
     // Appel de la vue
-    return view.render('pages/home', { sections })
+    return view.render('pages/home_sections', { sections })
   }
-
   /**
    * Display form to create a new record
    */
   async create({ view }: HttpContext) {
     // Récupération des sections triées par le nom
-    const sections = await Section.query().orderBy('name', 'asc')
+    const sections = await Section.query() //.orderBy('name', 'asc')
     // Appel de la vue
     return view.render('pages/section/create', { title: "Ajout d'une section", sections })
   }
