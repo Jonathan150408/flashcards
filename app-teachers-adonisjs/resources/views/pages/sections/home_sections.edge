@@ -37,13 +37,13 @@
               <td>
                 {{ section.id }}
               </td>
-              {{--  <td class="containerOptions">
-                <a href="{{ route('teacher.edit', {id: teacher.id}) }}">
+              <td class="containerOptions">
+                <a href="{{ route('section.edit', {id: section.id}) }}">
                   <img height="20em" src="/img/edit.png" alt="edit" />
                 </a>
 
                 <form
-                  action="{{ route('teacher.destroy', { id: teacher.id }) }}?_method=DELETE"
+                  action="{{ route('section.destroy', { id: section.id }) }}?_method=DELETE"
                   method="POST"
                   style="display: inline"
                 >
@@ -52,10 +52,10 @@
                     <img height="20em" src="/img/delete.png" alt="delete" />
                   </button>
                 </form>
-                <a href="{{ route('teacher.show', {id: teacher.id}) }}">
+                <a href="{{ route('section.show', {id: section.id}) }}">
                   <img height="20em" src="/img/detail.png" alt="detail" />
                 </a>
-              </td>  --}}
+              </td>
             </tr>
           @end
         </tbody>

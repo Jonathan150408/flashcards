@@ -14,14 +14,14 @@ export default class SectionsController {
     //dd(sections)
 
     // Appel de la vue
-    return view.render('pages/home_sections', { sections })
+    return view.render('pages/sections/home_sections', { sections })
   }
   /**
    * Display form to create a new record
    */
   async create({ view }: HttpContext) {
     // Récupération des sections triées par le nom
-    const sections = await Section.query() //.orderBy('name', 'asc')
+    const sections = await Section.query().orderBy('name', 'asc')
     // Appel de la vue
     return view.render('pages/section/create', { title: "Ajout d'une section", sections })
   }
@@ -49,5 +49,15 @@ export default class SectionsController {
   /**
    * Delete record
    */
-  async destroy({ params }: HttpContext) {}
+  async destroy({ params, session, response }: HttpContext) {
+    // Sélectionne l'enseignant à supprimer
+    const section = await Section.findOrFail(params.id)
+    // Supprime l'enseignant
+    await section.delete()
+    // Afficher un message à l'utilisateur
+    session.flash('success', `La section ${section.name} a été supprimée avec succès !`)
+    // Redirige l'utilisateur sur la home
+    return response.redirect().toRoute('home')
+    0
+  }
 }
