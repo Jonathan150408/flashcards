@@ -30,5 +30,5 @@ router.get('/teacher/:id/edit', [TeachersController, 'edit']).as('teacher.edit')
 router.put('/teacher/:id/update', [TeachersController, 'update']).as('teacher.update')
 
 // Peut etre, route pour afficher les sections
-router.get('/section/show', [SectionsController, 'index']).as('section.show')
+router.get('/section', [SectionsController, 'index']).as('section')
 router.get('/section/add', [SectionsController, 'create']).as('section.create')
