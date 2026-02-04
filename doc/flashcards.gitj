@@ -149,6 +149,26 @@
       "duration": 5,
       "status": "Done",
       "author": "Jonathan150408"
+    },
+    {
+      "id": "d1c5fb1e-301c-4377-87f6-c2ce70ad2d86",
+      "type": "commitless",
+      "name": "learn(review) : parcourir le corrigé du TF et revoir les migrations en classe",
+      "description": "Nous avons vu comment la user story sera corrigée, nous avons reparlé de la mise en place des étapes et nous avons fait un rappel sur les migrations et seeders en classe",
+      "date": "2026-02-04T12:12:00.000Z",
+      "duration": 50,
+      "status": "Done",
+      "author": "Jonathan150408"
+    },
+    {
+      "id": "46c18dcb-082a-4dcb-a3a0-bb2fd03006dc",
+      "type": "commitless",
+      "name": "chore(objectifs projet) : revoir et reparcourir les objectifs du projet en classe",
+      "description": "",
+      "date": "2026-02-04T14:14:00.000Z",
+      "duration": 60,
+      "status": "Done",
+      "author": "Jonathan150408"
     }
   ]
 }
