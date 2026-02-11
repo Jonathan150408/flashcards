@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @stack('dumper')
-  </head>
-  <body>
-    @component('components/layout')
-    @endcomponent
-  </body>
-</html>
+@component('components/layout', { title: 'Accueil' })
+  <h3>
+    Liste des decks
+  </h3>
+  @each((deck, index) in decks)
+    <div>
+      <h4>
+        {{ deck.name }}
+      </h4>
+      <p>
+        {{ deck.description }}
+      </p>
+    </div>
+  @end
+@endcomponent
