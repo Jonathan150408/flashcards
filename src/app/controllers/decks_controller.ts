@@ -1,3 +1,4 @@
+import Card from '#models/card'
 import Deck from '#models/deck'
 import type { HttpContext } from '@adonisjs/core/http'
 import { dd } from '@adonisjs/core/services/dumper'
@@ -8,7 +9,12 @@ export default class DecksController {
    */
   async index({ view }: HttpContext) {
     //va chercher les decks, ordonnées par nom
-    const decks = await Deck.query()
+    const decks = await Deck.query().withCount('cards')
+    // const cardsCounts = await Card.query()
+    //   .select('deck_id')
+    //   .count('id as count')
+    //   .groupBy('deck_id')
+    //   .then((rows) => rows.map((row) => [row.deck_id, Number(row.$extras.count)]))
 
     return view.render('pages/home.edge', { decks })
   }
