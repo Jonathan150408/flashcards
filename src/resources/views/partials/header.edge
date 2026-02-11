@@ -3,15 +3,32 @@
     h1 {
       text-align: center;
       font-family: sans-serif;
-      margin-top: 20px;
+      background-color: #424242ff;
+      color: white;
+      padding: 10px 0;
+      top: 0px;
+      position: relative;
+    }
+    
+    nav {
+      color: white;
+      background-color: darkgray;
+      padding: 10px 0;
+      width: 100%;
+      gap: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    a {
+      color: white;
     }
   </style>
   <h1>
     Flashcards
   </h1>
-  <ul>
-    <li>
-      <a href="">Accueil</a>
-    </li>
-  </ul>
+  <nav>
+    <a href="{{ route('home') }}">Accueil</a>
+    <a href="{{ route('cards_home') }}">Cartes</a>
+  </nav>
 </header>
