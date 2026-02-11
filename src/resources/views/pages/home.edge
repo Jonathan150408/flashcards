@@ -1,15 +1,51 @@
 @component('components/layout', { title: 'Accueil' })
   <h3>
-    Liste des decks
+    Mes decks
   </h3>
-  @each((deck, index) in decks)
-    <div>
-      <h4>
-        {{ deck.name }}
-      </h4>
-      <p>
-        {{ deck.description }}
-      </p>
-    </div>
-  @end
+  <section>
+    @each((deck, index) in decks)
+      <div class="deck">
+        <h4>
+          {{ deck.name }}
+        </h4>
+        <p>
+          {{ deck.description }}
+        </p>
+        <script>
+          console.log(cardsCounts);
+        </script>
+        <p>
+          {{ deck.$extra.card_count }} cartes
+        </p>
+      </div>
+    @end
+  </section>
+
+  <style>
+    h3 {
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    section {
+      display: flex;
+      gap: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .deck {
+      border: 2px solid black;
+      border-radius: 20px;
+      padding: 10px;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  </style>
 @endcomponent
