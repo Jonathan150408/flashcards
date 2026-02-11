@@ -1,10 +1,17 @@
+import Deck from '#models/deck'
 import type { HttpContext } from '@adonisjs/core/http'
+import { dd } from '@adonisjs/core/services/dumper'
 
 export default class DecksController {
   /**
    * Display a list of resource
    */
-  async index({}: HttpContext) {}
+  async index({ view }: HttpContext) {
+    //va chercher les decks, ordonnées par nom
+    const decks = await Deck.query()
+
+    return view.render('pages/home.edge', { decks })
+  }
 
   /**
    * Display form to create a new record
