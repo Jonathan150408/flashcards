@@ -2,14 +2,19 @@ import type { HttpContext } from '@adonisjs/core/http'
 
 //import the model to ask to database
 import Card from '#models/card'
+import { dd } from '@adonisjs/core/services/dumper'
 
 export default class CardsController {
   /**
    * Display a list of resource
    */
   async index({ view }: HttpContext) {
-    //HERE I AM
-    const cards = await Card.query
+    console.log("Called the card's controller with index")
+    //va chercher les cartes, ordonnées par id (de 1 à 10 par exemple)
+    const cards = await Card.query()
+    dd(cards)
+
+    return view.render('pages/cards/cards_home.edge', { cards })
   }
 
   /**
