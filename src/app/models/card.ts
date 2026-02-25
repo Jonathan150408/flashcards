@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
 // import { BaseModel, column } from '@adonisjs/lucid/orm'
 //test with chatgpt
-import { BaseModel, column, belongsTo, BelongsTo } from '@adonisjs/lucid/orm'
+import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import Deck from '#models/deck'
 
 export default class Card extends BaseModel {
@@ -16,7 +17,7 @@ export default class Card extends BaseModel {
   declare answer: String
   //champ deckId
   @column()
-  declare deck_id: number
+  declare deckId: number
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
