@@ -6,9 +6,9 @@
     {{ csrfField() }}
     {{-- Nom --}}
     <div class="champ">
-      <label for="Nom">Nom du deck</label>
-      <input type="text" id="nom" name="nom" value="{{ old('nom') || '' }}" />
-      @inputError('nom')
+      <label for="name">Nom du deck</label>
+      <input type="text" id="name" name="name" value="{{ old('name') || '' }}" />
+      @inputError('name')
         <p class="avertissement">
           {{ $messages.join(', ') }}
         </p>
@@ -25,6 +25,8 @@
         </p>
       @end
     </div>
+
+    {{--  Valider le form  --}}
     <button type="submit" class="bouton_envoi">Sauvegarder</button>
   </form>
 
@@ -67,6 +69,10 @@
       font-size: 1.2em;
       cursor: pointer;
       height: 50px;
+    }
+    
+    form p {
+      color: red;
     }
   </style>
 @endcomponent
