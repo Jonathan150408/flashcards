@@ -28,6 +28,7 @@
 
     {{--  Valider le form  --}}
     <button type="submit" class="bouton_envoi">Sauvegarder</button>
+    <a href="{{ route('home') }}" class="lien">Retour</a>
   </form>
 
   <style>
@@ -61,7 +62,8 @@
       border: none;
     }
     
-    .bouton_envoi {
+    .bouton_envoi,
+    .lien {
       background-color: lightblue;
       border: none;
       padding: 10px;
@@ -69,6 +71,17 @@
       font-size: 1.2em;
       cursor: pointer;
       height: 50px;
+    }
+    
+    .lien {
+      background-color: #c03939;
+      color: black;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-decoration: none;
+      padding: 0;
     }
     
     form p {
