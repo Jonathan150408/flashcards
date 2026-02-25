@@ -41,7 +41,11 @@ export default class DecksController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {}
+  async show({ params, view }: HttpContext) {
+    //rends le deck + cartes ou rien
+    const deck = await Deck.query().where('id', params.id).preload('cards').firstOrFail()
+    return view.render('pages/decks/decks_show.edge', { deck })
+  }
 
   /**
    * Edit individual record
