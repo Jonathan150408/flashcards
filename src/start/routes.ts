@@ -18,3 +18,5 @@ router.get('/cards', [CardsController, 'index']).as('cards_home')
 router.get('/decks/create', [DecksController, 'create']).as('decks_create')
 //enregistrement du deck
 router.post('/decks/store', [DecksController, 'store']).as('decks_store')
+//montrer toutes les cartes d'un deck
+router.get('/decks/:id/show', [DecksController, 'show']).as('decks_show')
