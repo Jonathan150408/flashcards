@@ -20,5 +20,9 @@ router.get('/decks/create', [DecksController, 'create']).as('decks_create')
 router.post('/decks/store', [DecksController, 'store']).as('decks_store')
 //montrer toutes les cartes d'un deck
 router.get('/decks/:id/show', [DecksController, 'show']).as('decks_show')
+
+//EN COURS
 //modifier un deck
 router.get('/decks/:id/edit', [DecksController, 'edit']).as('decks_edit')
+//supprimer un deck
+router.delete('/decks/:id/destroy', [DecksController, 'destroy']).as('decks_destroy')
