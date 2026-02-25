@@ -2,11 +2,71 @@
   <h2>
     Créer un nouveau deck
   </h2>
+  <form action="{{ route('decks_store') }}" method="POST">
+    {{ csrfField() }}
+    {{-- Nom --}}
+    <div class="champ">
+      <label for="Nom">Nom du deck</label>
+      <input type="text" id="nom" name="nom" value="{{ old('nom') || '' }}" />
+      @inputError('nom')
+        <p class="avertissement">
+          {{ $messages.join(', ') }}
+        </p>
+      @end
+    </div>
+
+    {{-- Description --}}
+    <div class="champ">
+      <label for="description">Description</label>
+      <input type="text" id="description" name="description" value="{{ old('description') || '' }}" />
+      @inputError('description')
+        <p class="avertissement">
+          {{ $messages.join(', ') }}
+        </p>
+      @end
+    </div>
+    <button type="submit" class="bouton_envoi">Sauvegarder</button>
+  </form>
+
   <style>
     h2 {
       text-align: center;
       margin: 20px 0;
       color: white;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 300px;
+      margin: 0 auto;
+    }
+    
+    .champ {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .champ label {
+      color: white;
+    }
+    
+    .champ input {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+    
+    .bouton_envoi {
+      background-color: lightblue;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 1.2em;
+      cursor: pointer;
+      height: 50px;
     }
   </style>
 @endcomponent

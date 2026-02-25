@@ -23,7 +23,9 @@ export default class DecksController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request }: HttpContext) {}
+  async store({ request }: HttpContext) {
+    dd(request.body())
+  }
 
   /**
    * Show individual record

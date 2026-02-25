@@ -16,3 +16,5 @@ router.get('/cards', [CardsController, 'index']).as('cards_home')
 
 //form création de decks
 router.get('/decks/create', [DecksController, 'create']).as('decks_create')
+//enregistrement du deck
+router.post('/decks/store', [DecksController, 'store']).as('decks_store')
