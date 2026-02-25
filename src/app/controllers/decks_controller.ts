@@ -8,15 +8,20 @@ export default class DecksController {
    * Display a list of resource
    */
   async index({ view }: HttpContext) {
-    //va chercher les decks, ordonnées par nom
-    const decks = await Deck.query().withCount('cards')
-    // const cardsCounts = await Card.query()
-    //   .select('deck_id')
-    //   .count('id as count')
-    //   .groupBy('deck_id')
-    //   .then((rows) => rows.map((row) => [row.deck_id, Number(row.$extras.count)]))
+    //va chercher les decks, ordonnées par id
+    const decks = await Deck.query().orderBy('id', 'asc')
+    //compte le nombre de cartes par deck
+    // !! fragile car si il manque un id c'est foutu !!
+    const cardsCount = await Card.query()
+      .select('deck_id')
+      .count('id as count')
+      .groupBy('deck_id')
+      .orderBy('deck_id', 'asc')
+      .then((rows) => rows.map((row) => Number(row.$extras.count)))
 
-    return view.render('pages/home.edge', { decks })
+    // dd(cardsCount)
+
+    return view.render('pages/home.edge', { decks, cardsCount })
   }
 
   /**

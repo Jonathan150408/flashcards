@@ -3,6 +3,7 @@
     Mes decks
   </h3>
   <section>
+    {{--  Lister les decks  --}}
     @each((deck, index) in decks)
       <div class="deck">
         <h4>
@@ -15,7 +16,7 @@
           console.log(cardsCounts);
         </script>
         <p>
-          {{ deck.$extra.card_count }} cartes
+          {{ cardsCount[index] }} cartes
         </p>
       </div>
     @end
