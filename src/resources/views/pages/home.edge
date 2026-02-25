@@ -20,6 +20,7 @@
         </p>
       </div>
     @end
+    <a href="{{ route('decks_create') }}">+</a>
   </section>
 
   <style>
@@ -36,7 +37,8 @@
       justify-content: center;
     }
     
-    .deck {
+    .deck,
+    section a {
       border: 2px solid black;
       border-radius: 20px;
       padding: 10px;
@@ -47,6 +49,13 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
+    }
+    
+    section a {
+      color: black;
+      background-color: lightblue;
+      text-decoration: none;
+      font-size: 5em;
     }
   </style>
 @endcomponent
