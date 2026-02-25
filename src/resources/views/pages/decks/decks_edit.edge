@@ -1,5 +1,96 @@
-@component
-<h2>
-  Modifier {{ deck.name }}
-</h2>
+@component('components/layout', { title: 'Accueil' })
+  <h2>
+    Modifier le deck {{ deck.name }}
+  </h2>
+  <form action="{{ route('decks_store') }}" method="POST">
+    {{ csrfField() }}
+    {{-- Nom --}}
+    <div class="champ">
+      <label for="name">Nom du deck</label>
+      <input type="text" id="name" name="name" value="{{ old('name', deck?.name ?? '') }}" />
+      @inputError('name')
+        <p class="avertissement">
+          {{ $messages.join(', ') }}
+        </p>
+      @end
+    </div>
+
+    {{-- Description --}}
+    <div class="champ">
+      <label for="description">Description</label>
+      <input
+        type="text"
+        id="description"
+        name="description"
+        value="{{ old('description', deck?.description ?? '') }}"
+      />
+      @inputError('description')
+        <p class="avertissement">
+          {{ $messages.join(', ') }}
+        </p>
+      @end
+    </div>
+
+    {{--  Valider le form  --}}
+    <button type="submit" class="bouton_envoi">Sauvegarder</button>
+    <a href="{{ route('home') }}" class="lien">Retour</a>
+  </form>
+
+  <style>
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+      color: white;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 300px;
+      margin: 0 auto;
+    }
+    
+    .champ {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .champ label {
+      color: white;
+    }
+    
+    .champ input {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+    
+    .bouton_envoi,
+    .lien {
+      background-color: lightblue;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 1.2em;
+      cursor: pointer;
+      height: 50px;
+    }
+    
+    .lien {
+      background-color: red;
+      color: black;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-decoration: none;
+      padding: 0;
+    }
+    
+    form p {
+      color: red;
+    }
+  </style>
 @endcomponent
