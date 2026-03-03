@@ -169,6 +169,16 @@
       "duration": 60,
       "status": "Done",
       "author": "Jonathan150408"
+    },
+    {
+      "id": "82d0bcfd-f845-4cac-80e3-ba5be9df8114",
+      "type": "commitless",
+      "name": "chore(SCRUM Meeting) : répondre aux questions (voir description)",
+      "description": "Ce que j'ai fait la dernière fois :\r\n- ajouter les seeders de cards et decks\r\n- importer les données des decks à l'aide du controlleur\r\n- afficher les données sur la page d'accueil\r\nCe que je doit faire\r\n- afficher le nombre de cartes par deck sur la page d'accueil\r\n- ajouter la possibilité de créer un deck (form + vérification + création en db)\r\nPoblème bloquant\r\n- j'ai du mal à récupérer le nombre de cartes/deck depuis le deckcontroller",
+      "date": "2026-03-03T13:14",
+      "duration": 15,
+      "status": "Done",
+      "author": "Jonathan150408"
     }
   ]
 }
