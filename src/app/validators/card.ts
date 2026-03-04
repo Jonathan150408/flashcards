@@ -8,12 +8,7 @@ const cardValidator = vine.compile(
       .minLength(10)
       .maxLength(255)
       .unique({ table: 'cards', column: 'question' }),
-    answer: vine
-      .string()
-      .trim()
-      .minLength(1)
-      .maxLength(255)
-      .unique({ table: 'cards', column: 'answer' }),
+    answer: vine.string().trim().minLength(1).maxLength(255),
   })
 )
 export { cardValidator }
