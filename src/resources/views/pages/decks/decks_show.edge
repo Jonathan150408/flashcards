@@ -22,7 +22,11 @@
 
     <div class="updateOrDelete">
       <a href="{{ route('decks_edit', { id: deck.id }) }}" class="orange">Modifier le deck</a>
-      <a href="{{ route('decks_destroy', { id: deck.id }) }}" class="red">Supprimer le deck</a>
+      <a
+        href="#"
+        onclick="if(confirm('Êtes-vous sûr de vouloir supprimer ce deck ?')) { window.location.href = '{{ route('decks_destroy', { id: deck.id }) }}'; }"
+        class="red"
+      >Supprimer le deck</a>
     </div>
   </main>
   <script>
