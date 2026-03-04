@@ -2,7 +2,12 @@ import vine from '@vinejs/vine'
 const deckValidator = vine.compile(
   vine.object({
     //validation des champs (varchar 255 non-null)
-    name: vine.string().trim().minLength(1).maxLength(255),
+    name: vine
+      .string()
+      .trim()
+      .minLength(1)
+      .maxLength(255)
+      .unique({ table: 'decks', column: 'name' }),
     description: vine.string().trim().minLength(10).maxLength(255),
   })
 )

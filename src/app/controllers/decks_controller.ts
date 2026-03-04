@@ -59,16 +59,18 @@ export default class DecksController {
    * Handle form submission for the edit action
    */
   async update({ params, request, session, response }: HttpContext) {
-    // Validation des données saisies par l'utilisateur
+    // valider les données
     const { name, description } = await request.validateUsing(deckValidator)
-    // Sélectionner l'enseignant dont on veut mettre à jour des informations
+
+    // trouver, modifier et sauvegarder le deck
     const deck = await Deck.findOrFail(params.id)
-    // Met à jour les infos de l'enseignant
     deck.merge({ name, description })
     const deckUpdated = await deck.save()
-    // Afficher un message à l'utilisateur
+
+    // flash - fonctionne pas
     session.flash('success', `Le deck ${deckUpdated.name} a été mis à jour !`)
-    // Redirige l'utilisateur sur la home
+
+    // revoie sur home
     return response.redirect().toRoute('home')
   }
 
@@ -76,12 +78,14 @@ export default class DecksController {
    * Delete record
    */
   async destroy({ params, session, response }: HttpContext) {
+    // trouver et supprimer le deck
     const deck = await Deck.findOrFail(params.id)
     await deck.delete()
 
-    // Afficher un message à l'utilisateur
+    // flash - fonctionne pas
     session.flash('success', `Le deck ${deck.name} a été supprimé !`)
-    // Redirige l'utilisateur vers home
+
+    // revoie sur home
     return response.redirect().toRoute('home')
   }
 }
