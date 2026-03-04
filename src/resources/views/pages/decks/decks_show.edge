@@ -3,29 +3,34 @@
     {{ deck.name }}
   </h2>
   <main>
-    <section class="cartes">
-      @each((card, index) in deck.cards)
-        <a href="{{ route('cards_show', { id: card.id }) }}" class="carte">
-          <p class="question">
-            {{ card.question }}
-          </p>
-          <p class="answer">
-            {{ card.answer }}
-          </p>
-        </a>
+    <section class="deck">
+      <div class="cartes">
+        @each((card, index) in deck.cards)
+          <a href="{{ route('cards_show', { id: card.id }) }}" class="carte">
+            <p class="question">
+              {{ card.question }}
+            </p>
+            <p class="answer">
+              {{ card.answer }}
+            </p>
+          </a>
 
-      @end
+        @end
+      </div>
+
+      <div class="updateOrDelete">
+        <a href="{{ route('cards_create', { deckId: deck.id }) }}" class="green">Ajouter une carte</a>
+        <a href="{{ route('decks_edit', { id: deck.id }) }}" class="orange">Modifier le deck</a>
+        <a
+          href="#"
+          onclick="if(confirm('Êtes-vous sûr de vouloir supprimer ce deck ?')) { window.location.href = '{{ route('decks_destroy', { id: deck.id }) }}'; }"
+          class="red"
+        >Supprimer le deck</a>
+      </div>
     </section>
-
-    <div class="updateOrDelete">
-      <a href="{{ route('cards_create', { deckId: deck.id }) }}" class="green">Ajouter une carte</a>
-      <a href="{{ route('decks_edit', { id: deck.id }) }}" class="orange">Modifier le deck</a>
-      <a
-        href="#"
-        onclick="if(confirm('Êtes-vous sûr de vouloir supprimer ce deck ?')) { window.location.href = '{{ route('decks_destroy', { id: deck.id }) }}'; }"
-        class="red"
-      >Supprimer le deck</a>
-    </div>
+    <section>
+      <a href="{{ route('decks_practice', { id: deck.id }) }}">S'exercer</a>
+    </section>
   </main>
   <style>
     h2 {
@@ -34,7 +39,7 @@
       margin: 20px 0;
     }
     
-    main {
+    .deck {
       display: grid;
       grid-template-columns: 1fr 5fr 1fr;
     }

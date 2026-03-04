@@ -88,4 +88,11 @@ export default class DecksController {
     // revoie sur home
     return response.redirect().toRoute('home')
   }
+
+  /**
+   * Pratiquer un deck
+   */
+  async practice({ view, params }: HttpContext) {
+    const deck
+  }
 }
