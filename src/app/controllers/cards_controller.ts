@@ -8,13 +8,7 @@ export default class CardsController {
   /**
    * Display a list of resource
    */
-  async index({ view }: HttpContext) {
-    console.log("Called the card's controller with index")
-    //va chercher les cartes, ordonnées par id (de 1 à 10 par exemple)
-    const cards = await Card.query()
-
-    return view.render('pages/cards/cards_home.edge', { cards })
-  }
+  async index({ view }: HttpContext) {}
 
   /**
    * Display form to create a new record
