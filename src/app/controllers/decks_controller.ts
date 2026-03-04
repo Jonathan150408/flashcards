@@ -58,7 +58,19 @@ export default class DecksController {
   /**
    * Handle form submission for the edit action
    */
-  async update({ params, request }: HttpContext) {}
+  async update({ params, request, session, response }: HttpContext) {
+    // Validation des données saisies par l'utilisateur
+    const { name, description } = await request.validateUsing(deckValidator)
+    // Sélectionner l'enseignant dont on veut mettre à jour des informations
+    const deck = await Deck.findOrFail(params.id)
+    // Met à jour les infos de l'enseignant
+    deck.merge({ name, description })
+    const deckUpdated = await deck.save()
+    // Afficher un message à l'utilisateur
+    session.flash('success', `Le deck ${deckUpdated.name} a été mis à jour !`)
+    // Redirige l'utilisateur sur la home
+    return response.redirect().toRoute('home')
+  }
 
   /**
    * Delete record

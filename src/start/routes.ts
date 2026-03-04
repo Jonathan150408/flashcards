@@ -22,7 +22,6 @@ router.post('/decks/store', [DecksController, 'store']).as('decks_store')
 router.get('/decks/:id/show', [DecksController, 'show']).as('decks_show')
 //supprimer un deck
 router.get('/decks/:id/destroy', [DecksController, 'destroy']).as('decks_destroy')
-
-//EN COURS
 //modifier un deck
-router.get('/decks/:id/edit', [DecksController, 'edit']).as('decks_edit')
+router.get('/decks/:id/edit', [DecksController, 'edit']).as('decks_edit') //1. afficher le form
+router.post('/decks/:id/update', [DecksController, 'update']).as('decks_update') //2. valider et enregistrer
