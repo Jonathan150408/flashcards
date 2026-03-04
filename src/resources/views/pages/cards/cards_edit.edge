@@ -28,7 +28,7 @@
 
     {{--  Valider le form  --}}
     <button type="submit" class="bouton_envoi">Sauvegarder</button>
-    <a href="{{ route('home') }}" class="lien">Retour</a>
+    <a href="{{ route('cards_show', { id: card.id }) }}" class="lien">Retour</a>
   </form>
 
   <style>
