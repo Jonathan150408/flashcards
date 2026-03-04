@@ -56,7 +56,21 @@ export default class CardsController {
   /**
    * Handle form submission for the edit action
    */
-  async update({ params, request }: HttpContext) {}
+  async update({ params, request, session, response }: HttpContext) {
+    // valider les données
+    const { question, answer } = await request.validateUsing(cardValidator)
+
+    // trouver, modifier et sauvegarder le deck
+    const card = await Card.findOrFail(params.id)
+    card.merge({ question, answer })
+    const cardUpdated = await card.save()
+
+    // flash - fonctionne pas
+    session.flash('success', `La carte ${cardUpdated.question} a été mise à jour !`)
+
+    // revoie sur home
+    return response.redirect().toRoute('decks_show', { id: card.deckId })
+  }
 
   /**
    * Delete record

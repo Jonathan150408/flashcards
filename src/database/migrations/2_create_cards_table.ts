@@ -9,9 +9,9 @@ export default class extends BaseSchema {
 
       // question non-nulle et unique
       table.string('question').notNullable().unique()
-      //réponse non-nulle et unique
-      table.string('answer').notNullable().unique()
-      //clé étrangère vers la table decks - aide de l'IA
+      //réponse non-nulle
+      table.string('answer').notNullable()
+      //clé étrangère vers la table decks
       table.integer('deck_id').unsigned().references('id').inTable('decks').onDelete('CASCADE')
 
       table.timestamp('created_at')
