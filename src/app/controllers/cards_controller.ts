@@ -13,7 +13,9 @@ export default class CardsController {
   /**
    * Display form to create a new record
    */
-  async create({}: HttpContext) {}
+  async create({ view }: HttpContext) {
+    return view.render('pages/cards/cards_create.edge')
+  }
 
   /**
    * Handle form submission for the create action

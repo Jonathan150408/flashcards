@@ -3,7 +3,7 @@
     {{ deck.name }}
   </h2>
   <main>
-    <div class="cartes">
+    <section class="cartes">
       @each((card, index) in deck.cards)
         <div class="carte">
           <p class="question">
@@ -18,7 +18,9 @@
           </p>
         </div>
       @end
-    </div>
+      <a href="{{ route('cards_create') }}" class="bouton_ajout">+</a>
+
+    </section>
 
     <div class="updateOrDelete">
       <a href="{{ route('decks_edit', { id: deck.id }) }}" class="orange">Modifier le deck</a>
@@ -58,7 +60,8 @@
       grid-column: 2;
     }
     
-    .carte {
+    .carte,
+    section a {
       background-color: black;
       text-decoration: none;
       color: white;
@@ -119,6 +122,11 @@
     
     .carte {
       cursor: pointer;
+    }
+    
+    .bouton_ajout {
+      background-color: lightgreen;
+      font-size: 5em;
     }
   </style>
 @endcomponent
