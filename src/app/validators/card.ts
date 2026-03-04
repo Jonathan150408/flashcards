@@ -5,7 +5,7 @@ const cardValidator = vine.compile(
     question: vine
       .string()
       .trim()
-      .minLength(1)
+      .minLength(10)
       .maxLength(255)
       .unique({ table: 'cards', column: 'question' }),
     answer: vine
