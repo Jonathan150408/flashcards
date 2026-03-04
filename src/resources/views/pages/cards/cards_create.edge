@@ -2,7 +2,7 @@
   <h2>
     Créer une nouvelle carte
   </h2>
-  <form action="{{ route('cards_store') }}" method="POST">
+  <form action="{{ route('cards_store', { deckId: deckId }) }}" method="POST">
     {{ csrfField() }}
     {{-- question --}}
     <div class="champ">
@@ -29,7 +29,7 @@
     {{--  Valider le form  --}}
     <button type="submit" class="bouton_envoi">Sauvegarder</button>
     {{--  Retour au deck  --}}
-    <a href="{{ route('decks_show', { id: card.deckId }) }}" class="lien">Retour</a>
+    <a href="{{ route('decks_show', { id: deckId }) }}" class="lien">Retour</a>
   </form>
 
   <style>

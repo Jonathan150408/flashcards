@@ -3,6 +3,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 //import the model to ask to database
 import Card from '#models/card'
 import { dd } from '@adonisjs/core/services/dumper'
+import { cardValidator } from '#validators/card'
 
 export default class CardsController {
   /**
@@ -17,14 +18,27 @@ export default class CardsController {
    * Display form to create a new record
    */
   async create({ view, params }: HttpContext) {
-    const card = await Card.query().where('id', params.deckId).firstOrFail()
-    return view.render('pages/cards/cards_create.edge', { card })
+    const deckId = params.deckId
+    return view.render('pages/cards/cards_create.edge', { deckId })
   }
 
   /**
    * Handle form submission for the create action
    */
-  async store({ request }: HttpContext) {}
+  async store({ request, session, response, params }: HttpContext) {
+    // Valider les infos
+    const { question, answer } = await request.validateUsing(cardValidator)
+    // Créer du deck
+    const card = await Card.create({
+      question,
+      answer,
+      deckId: params.deckId,
+    })
+    // Afficher un message à l'utilisateur
+    session.flash('success', `La nouvelle carte ${card.question} a été ajoutée !`)
+    // Rediriger vers la homepage
+    return response.redirect().toRoute('decks_show', { id: card.deckId })
+  }
 
   /**
    * Show individual record
