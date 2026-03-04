@@ -18,7 +18,7 @@
     </section>
 
     <div class="updateOrDelete">
-      <a href="{{ route('cards_create') }}" class="green">Ajouter une carte</a>
+      <a href="{{ route('cards_create', { deckId: deck.id }) }}" class="green">Ajouter une carte</a>
       <a href="{{ route('decks_edit', { id: deck.id }) }}" class="orange">Modifier le deck</a>
       <a
         href="#"

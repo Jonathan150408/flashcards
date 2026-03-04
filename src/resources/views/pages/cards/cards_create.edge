@@ -28,7 +28,8 @@
 
     {{--  Valider le form  --}}
     <button type="submit" class="bouton_envoi">Sauvegarder</button>
-    <a href="{{ route('home') }}" class="lien">Retour</a>
+    {{--  Retour au deck  --}}
+    <a href="{{ route('decks_show', { id: card.deckId }) }}" class="lien">Retour</a>
   </form>
 
   <style>

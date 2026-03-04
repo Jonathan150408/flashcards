@@ -16,8 +16,9 @@ export default class CardsController {
   /**
    * Display form to create a new record
    */
-  async create({ view }: HttpContext) {
-    return view.render('pages/cards/cards_create.edge')
+  async create({ view, params }: HttpContext) {
+    const card = await Card.query().where('id', params.deckId).firstOrFail()
+    return view.render('pages/cards/cards_create.edge', { card })
   }
 
   /**

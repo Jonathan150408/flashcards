@@ -29,7 +29,7 @@ router.post('/decks/:id/update', [DecksController, 'update']).as('decks_update')
 //--------------- partie pour les cartes ---------------
 router.get('/cards/:id/show', [CardsController, 'index']).as('cards_show')
 //création d'une carte
-router.get('/cards/create', [CardsController, 'create']).as('cards_create') //1. form de création
+router.get('/cards/:deckId/create', [CardsController, 'create']).as('cards_create') //1. form de création
 router.post('/cards/store', [CardsController, 'store']).as('cards_store') //2. validation et création
 //supprimer un carte
 router.get('/cards/:id/destroy', [CardsController, 'destroy']).as('cards_destroy')
