@@ -48,7 +48,10 @@ export default class CardsController {
   /**
    * Edit individual record
    */
-  async edit({ params }: HttpContext) {}
+  async edit({ params, view }: HttpContext) {
+    const card = await Card.query().where('id', params.id).firstOrFail()
+    return view.render('pages/cards/cards_edit.edge', { card })
+  }
 
   /**
    * Handle form submission for the edit action
