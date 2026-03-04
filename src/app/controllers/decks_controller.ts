@@ -90,9 +90,18 @@ export default class DecksController {
   }
 
   /**
+   * Choisir le mode de jeu
+   */
+  async choose_practice_mode({ view, params }: HttpContext) {
+    const deck = await Deck.findOrFail(params.id)
+    return view.render('pages/decks/decks_practice_menu.edge', { deck })
+  }
+
+  /**
    * Pratiquer un deck
    */
   async practice({ view, params }: HttpContext) {
-    const deck
+    const deck = await Deck.findOrFail(params.id)
+    return view.render('pages/decks/decks_practice.edge', { deck })
   }
 }

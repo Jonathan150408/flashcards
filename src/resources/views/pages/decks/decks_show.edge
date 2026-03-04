@@ -28,11 +28,25 @@
         >Supprimer le deck</a>
       </div>
     </section>
-    <section>
-      <a href="{{ route('decks_practice', { id: deck.id }) }}">S'exercer</a>
+    <section id="exercer">
+      <a href="{{ route('decks_practice_mode', { id: deck.id }) }}">S'exercer</a>
     </section>
   </main>
   <style>
+    #exercer {
+      text-align: center;
+      margin: 48px;
+    }
+    
+    #exercer a {
+      border: 1px solid white;
+      text-decoration: none;
+      padding: 24px;
+      background-color: lightblue;
+      border-radius: 20px;
+      color: black;
+    }
+    
     h2 {
       text-align: center;
       color: white;

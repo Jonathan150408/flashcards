@@ -26,7 +26,10 @@ router.get('/decks/:id/destroy', [DecksController, 'destroy']).as('decks_destroy
 router.get('/decks/:id/edit', [DecksController, 'edit']).as('decks_edit') //1. afficher le form
 router.post('/decks/:id/update', [DecksController, 'update']).as('decks_update') //2. valider et enregistrer
 //exercer un deck
-router.get('/decks/:id/practice', [DecksController, 'practice']).as('decks_practice')
+router
+  .get('/decks/:id/choose_practice_mode', [DecksController, 'choose_practice_mode'])
+  .as('decks_practice_mode') //choix du mode
+router.get('/decks/:id/practice', [DecksController, 'practice']).as('decks_practice') //exercice
 
 //--------------- partie pour les cartes ---------------
 router.get('/cards/:id/show', [CardsController, 'show']).as('cards_show')
