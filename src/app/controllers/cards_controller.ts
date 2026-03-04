@@ -9,10 +9,7 @@ export default class CardsController {
   /**
    * Display a list of resource
    */
-  async index({ view, params }: HttpContext) {
-    const card = await Card.query().where('id', params.id).firstOrFail()
-    return view.render('pages/cards/cards_show.edge', { card })
-  }
+  async index({ view, params }: HttpContext) {}
 
   /**
    * Display form to create a new record
@@ -43,7 +40,10 @@ export default class CardsController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {}
+  async show({ params, view }: HttpContext) {
+    const card = await Card.query().where('id', params.id).firstOrFail()
+    return view.render('pages/cards/cards_show.edge', { card })
+  }
 
   /**
    * Edit individual record
