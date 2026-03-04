@@ -5,24 +5,20 @@
   <main>
     <section class="cartes">
       @each((card, index) in deck.cards)
-        <div class="carte">
+        <a href="{{ route('cards_show', { id: card.id }) }}" class="carte">
           <p class="question">
             {{ card.question }}
           </p>
           <p class="answer">
-            {{ card.question }}
-          <br />
-            <br />
-            Réponse :
-          {{ card.answer }}
+            {{ card.answer }}
           </p>
-        </div>
-      @end
-      <a href="{{ route('cards_create') }}" class="bouton_ajout">+</a>
+        </a>
 
+      @end
     </section>
 
     <div class="updateOrDelete">
+      <a href="{{ route('cards_create') }}" class="green">Ajouter une carte</a>
       <a href="{{ route('decks_edit', { id: deck.id }) }}" class="orange">Modifier le deck</a>
       <a
         href="#"
@@ -31,14 +27,6 @@
       >Supprimer le deck</a>
     </div>
   </main>
-  <script>
-    // retourner la carte
-    document.querySelectorAll(".carte").forEach(card => {
-      card.addEventListener("click", () => {
-        card.classList.toggle("flipped");
-      });
-    });
-  </script>
   <style>
     h2 {
       text-align: center;
@@ -52,29 +40,23 @@
     }
     
     .cartes {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      padding: 0px 128px;
-      justify-content: center;
       grid-column: 2;
     }
     
-    .carte,
-    section a {
-      background-color: black;
-      text-decoration: none;
+    .carte {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin: 16px;
       color: white;
-      border: 2px solid white;
-      border-radius: 20px;
-      padding: 10px;
-      width: 200px;
-      height: 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      border-bottom: 1px solid white;
+      text-decoration: none;
+      padding-bottom: 16px;
+    }
+    
+    .question,
+    .answer {
+      text-align: left;
     }
     
     .updateOrDelete {
@@ -106,27 +88,9 @@
       background-color: orange;
     }
     
-    /* retourner la carte */
-    
-    .carte .answer {
-      display: none;
-    }
-    
-    .carte.flipped .question {
-      display: none;
-    }
-    
-    .carte.flipped .answer {
-      display: block;
-    }
-    
-    .carte {
-      cursor: pointer;
-    }
-    
-    .bouton_ajout {
+    .green {
       background-color: lightgreen;
-      font-size: 5em;
+      color: black;
     }
   </style>
 @endcomponent

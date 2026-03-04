@@ -8,7 +8,10 @@ export default class CardsController {
   /**
    * Display a list of resource
    */
-  async index({ view }: HttpContext) {}
+  async index({ view, params }: HttpContext) {
+    const card = await Card.query().where('id', params.id).firstOrFail()
+    return view.render('pages/cards/cards_show.edge', { card })
+  }
 
   /**
    * Display form to create a new record

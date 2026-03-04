@@ -27,6 +27,7 @@ router.get('/decks/:id/edit', [DecksController, 'edit']).as('decks_edit') //1. a
 router.post('/decks/:id/update', [DecksController, 'update']).as('decks_update') //2. valider et enregistrer
 
 //--------------- partie pour les cartes ---------------
+router.get('/cards/:id/show', [CardsController, 'index']).as('cards_show')
 //création d'une carte
 router.get('/cards/create', [CardsController, 'create']).as('cards_create') //1. form de création
 router.post('/cards/store', [CardsController, 'store']).as('cards_store') //2. validation et création
