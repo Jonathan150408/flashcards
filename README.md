@@ -2,7 +2,7 @@
 
 ## Objectif pédagogiques et produits
 
-l'objectif final de ce projet est de fournir une application à l'aide du framework Adonis. L'application permettra de créer, réviser et sauvegarder des decks de flashcards utiles à l'apprentissage.
+L'objectif final de ce projet est de fournir une application à l'aide du framework Adonis. L'application permettra de créer, réviser et sauvegarder des decks de flashcards utiles à l'apprentissage. Ce projet vise surtout à augmenter / travailler les compétences avec le célèbre framework Adonis.
 
 ## User Stories
 
@@ -26,3 +26,5 @@ l'objectif final de ce projet est de fournir une application à l'aide du framew
 ## Bilan - résultats vs objectifs
 
 ## Stratégie et utilisation de l'IA
+
+Étant donné que le départ du projet fut très difficile pour moi, j'ai essayé d'être au plus méthodique quant à ma méthode d'apprentissage et de progression dans cet environnement.
