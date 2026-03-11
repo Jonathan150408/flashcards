@@ -1,0 +1,54 @@
+@layout('layouts/main')
+
+  @section('content')
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold mb-6">
+        Pratiquer le deck : {{ deck.name }}
+      </h1>
+
+      <div class="flex flex-col items-center justify-center min-h-96">
+        <div
+          id="card"
+          class="bg-white shadow-lg rounded-lg p-8 cursor-pointer text-center max-w-md w-full"
+          onclick="toggleCard()"
+        >
+          <p id="card-text" class="text-xl">
+            {{ deck.cards[0].question }}
+          </p>
+        </div>
+
+        <button
+          id="next-btn"
+          class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onclick="nextCard()"
+        >
+          Carte suivante
+      </button>
+      </div>
+    </div>
+
+    <script>
+      let currentIndex = 0;
+
+      const cards = @json(deck.cards);
+
+      let showingAnswer = false;
+
+      function toggleCard() {
+        const cardText = document.getElementById("card-text");
+        if (showingAnswer) {
+          cardText.textContent = cards[currentIndex].question;
+        } else {
+          cardText.textContent = cards[currentIndex].answer;
+        }
+        showingAnswer = !showingAnswer;
+      }
+
+      function nextCard() {
+        currentIndex = (currentIndex + 1) % cards.length;
+        showingAnswer = false;
+        document.getElementById("card-text").textContent = cards[currentIndex].question;
+      }
+    </script>
+  @endsection
+@end

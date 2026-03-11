@@ -3,7 +3,7 @@
     Vous avez choisi le deck {{ deck.name }}
   </h2>
   <main>
-    <form id="modeForm" method="POST" action="#">
+    <form id="modeForm" action="{{ route('decks_practice', {id : deck.id}) }}" method="GET">
       {{-- CSRF if needed: {{ csrfField() }} --}}
       <div class="toggle-container">
         <span class="label">Basique</span>
