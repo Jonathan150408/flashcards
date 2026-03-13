@@ -25,6 +25,51 @@ L'objectif final de ce projet est de fournir une application à l'aide du framew
 
 ## Bilan - résultats vs objectifs
 
+> De manière générale, ce ne fut pas un franc succès, mais ce ne fut pas non plus un échec. J'ai compris comment monter - développer - utiliser Adonis pour mon projet, mais je dois admettre que l'IA m'a été bien plus utile que je ne l'aurais voulu durant ce projet.
+
+### Gestion de la collection de decks
+
+> | Objectif                                                                                                |                                                                     Bilan |
+> | :------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------: |
+> | Accès aux deck sur la page d'accueil lors de la connection                                              |                                                                   Atteint |
+> | Le curseur indique que les decks sont cliquables                                                        |                                                                   Atteint |
+> | Cliquer sur ajouter redirige vers le formulaire de création                                             |      Atteint, le bouton ajouter est un logo + dont le fond est bleu clair |
+> | L'annulation de la création depuis le formulaire redirige vers home                                     |                                                                   Atteint |
+> | Le formulaire permet de créer un nouveau deck                                                           |                                                                   Atteint |
+> | Le formulaire ne créé pas de doublons de decks                                                          |                        Atteint, un message d'erreur empêche la validation |
+> | Le formulaire ne valide pas si la description est de - de 10 caractères                                 |                           Atteint, un message d'erreur aide l'utilisateur |
+> | Sur la homepage cliquer sur un deck redirige vers la page dédié à la présentation du deck               |                                                                   Atteint |
+> | Sur la page de visualisation d'un deck, le bouton supprimer affiche un popup de confirmation            | Discutable, confirmation oui mais le "popup" est généré par le navigateur |
+> | Si je clique sur annuler lors de la suppression, le deck reste sur la page d'accueil                    |              Discutable, annuler n'existe pas, il faut cliquer sur escape |
+> | Après confirmation, le deck est supprimé                                                                |                                                                   Atteint |
+> | Le bouton modifier le deck amène vers le formulaire de modification, le formulaire est pré-rempli       |                                                                   Atteint |
+> | Si j'enregistre les modifications, le deck est modifié                                                  | Discutable, modification oui, mais impossible de valider avec le même nom |
+> | Sur la page de modification cliquer sur annuler ne modifie pas le deck et ramène sur la liste des decks |                                                                   Atteint |
+
+### Gestion de la collection de cartes
+
+> | Objectif                                                                                                |                                                                          Bilan |
+> | :------------------------------------------------------------------------------------------------------ | -----------------------------------------------------------------------------: |
+> | Sur la page d'un deck, je clique sur ajouter une carte et j'arrive sur la page d'ajout                  |                                                                        Atteint |
+> | Le curseur indique que les cartes sur la page d'un deck sont cliquables                                 |                                                                        Atteint |
+> | Sur la page d'un deck, cliquer sur une carte amène sur une page dédiée                                  |                                                                        Atteint |
+> | Sur la page de visualisation d'une carte, cliquer dessus la retourne                                    |                                                                                |
+> | Sur la page de visualisation d'une carte, je clique sur OK et retourn à la liste des cartes du deck     |                                                                        Atteint |
+> | Depuis le formulaire de création d'une carte, abandonner fait revenir sur la liste des cartes           |                                                                        Atteint |
+> | Le formulaire de création ajoute la nouvelle carte au deck après confirmation                           |                                                                        Atteint |
+> | Le formulaire ne crée pas de doublon de carte (même question)                                           |                                                                                |
+> | Le formulaire ne valide pas les cartes dont la question fait moins de 10 caractère ou réponse vide      |                                                                                |
+> | Si je clique sur annuler lors de la suppression, la carte n'est pas supprimée                           |                   Discutable, annuler n'existe pas, il faut cliquer sur escape |
+> | Sur la page de la carte, je clique sur supprimer et un popup apparait pour me demander de confirmer     |      Discutable, confirmation oui mais le "popup" est généré par le navigateur |
+> | Sur la page de la carte, je peux accèder au formulaire de modification en cliquant sur modifier         |                                                                        Atteint |
+> | Sur la page de modification, cliquer sur abandonner fait revenir à la page de la carte sans la modifier |                                                                        Atteint |
+> | Sur la page de modification, la validation du form avec des données ok modifie la carte                 | Discutable, modification oui, mais impossible de valider avec la même question |
+
+### Entrainement et mode de base
+
 ## Stratégie et utilisation de l'IA
 
-Étant donné que le départ du projet fut très difficile pour moi, j'ai essayé d'être au plus méthodique quant à ma méthode d'apprentissage et de progression dans cet environnement.
+> Étant donné que le départ du projet fut très difficile pour moi, j'ai essayé d'être au plus méthodique quant à ma méthode d'apprentissage et de progression dans cet environnement.
+> <br>J'ai donc gardé Copilot activé dans Visual Studio Code et me suis appuyé sur ses suggestions afin de voir dans quelle direction creuser. Pour les bugs logiciels je me suis appuyé sur mon expérience, puis si cela ne suffisait pas, je demandais à Copilot par je chat en ajoutant les fichiers susceptibles d'avoir un bug.
+> <br>Concernant la compréhension générale comme, par exemple, le schéma MVC, j'ai cherché dans les pdf fournis, puis à nouveau si je ne comprenais pas, je demandais à l'IA - ChatGPT cette fois et pour 2 raisons. La première est que je trouve les explications de ChatGPT plus faciles à comprendre bien que parfois moins précise. La deuxième raison est que la plan Copilot Free possède une limite plutôt basse en terme d'utilisations.
+> <br>Je n'ai pas utilisé d'autre IA pour ce projet et je pense avoir plutôt bien compris le fonctionnement de Adonis de manière générale. J'ai encore un peu de peine avec les relations (HasMany, BelongsTo) et la manière de charger les données correspondantes à une entrée dans une autre table (.preload, $extras).
