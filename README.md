@@ -6,20 +6,7 @@ L'objectif final de ce projet est de fournir une application à l'aide du framew
 
 ## User Stories
 
-- En tant qu'utilisateur, j'aimerais voir la liste de mes decks lors de la connection, afin d'avoir accès à tous mes decks enregistrés.
-- En tant qu'utilisateur, j'aimerais que le curseur de la souris change en passant sur un de mes decks, afin que je puisse facilement comprendre qu'un clic provoque une redirection.
-- En tant que dévellopeur, j'aimerais que l'action de clic sur _ajouter_ redirige l'utilisateur vers l'interface de création, afin que les utilisateurs puissent créer et ajouter leurs decks.
-- En tant qu'utilisateur, j'aimerais qu'un clic sur _abandonner_ me permette de retourner à la liste des decks, afin de pouvoir abandonner la création d'un deck dans le cas d'un changement d'avis.
-- En tant qu'utilisateur, j'aimerais être redirigé sur la liste des decks lors de la validation de la création d'un nouveau deck, afin de pouvoir y accéder.
-- En tant que dévellopeur, je souhaite que la création d'un deck du même nom qu'un autre déjà existant du même utilisateur soit interdite, afin d'éviter les doublons et les collisions.
-- En tant que client, j'aimerais que la création d'un deck dont la description contient moins de 10 caractères soit annulée, afin de ne pas permettre de trop petites descriptions.
-- En tant qu'utilisateur, j'aimerais qu'un clic sur une ligne du tableau sur la page de liste des decks me permette d'accéder à toutes les cartes, afin de pouvoir m'entrainer.
-- En tant qu'utilisateur, j'aimerais qu'une pop-up me demande confirmation lors de la suppression d'un deck, afin d'éviter les supressions involontaires.
-- En tant qu'utilisateur, j'aimerais que l'annulation de la supression d'un deck me fasse revenir sur la liste des decks, afin de pouvoir sélectionner le deck de mon choix.
-- En tant qu'utilisateur, j'aimerais qu'un deck soit supprimé lors de la confirmation sur la pop-up, afin de ne plus voir ce deck.
-- En tant qu'utilisateur, je souhaite arriver sur la page d'édition avec les champs préremplis lors d'un clic sur _modifier_, afin de pouvoir modifier le deck.
-- En tant que client, je souhaite qu'un deck soit mis à jour lors de la sauvegarde de changements, afin que les utilisateurs puissent porfiter de la dernière version.
-- En tant que client, je souhaite qu'un clic sur _abandonner_ lors de la modification d'un deck ne modifie pas le deck, afin que les utilisateurs puissent annuler les changements effectués.
+> Les points demandés dans les User Stories sont redéfinits dans la partie **Bilan**
 
 ## Marche à suivre - installation et utilisation
 
@@ -53,12 +40,12 @@ L'objectif final de ce projet est de fournir une application à l'aide du framew
 > | Sur la page d'un deck, je clique sur ajouter une carte et j'arrive sur la page d'ajout                  |                                                                        Atteint |
 > | Le curseur indique que les cartes sur la page d'un deck sont cliquables                                 |                                                                        Atteint |
 > | Sur la page d'un deck, cliquer sur une carte amène sur une page dédiée                                  |                                                                        Atteint |
-> | Sur la page de visualisation d'une carte, cliquer dessus la retourne                                    |                                                                                |
+> | Sur la page de visualisation d'une carte, cliquer dessus la retourne                                    |                                                                        Atteint |
 > | Sur la page de visualisation d'une carte, je clique sur OK et retourn à la liste des cartes du deck     |                                                                        Atteint |
 > | Depuis le formulaire de création d'une carte, abandonner fait revenir sur la liste des cartes           |                                                                        Atteint |
 > | Le formulaire de création ajoute la nouvelle carte au deck après confirmation                           |                                                                        Atteint |
-> | Le formulaire ne crée pas de doublon de carte (même question)                                           |                                                                                |
-> | Le formulaire ne valide pas les cartes dont la question fait moins de 10 caractère ou réponse vide      |                                                                                |
+> | Le formulaire ne crée pas de doublon de carte (même question)                                           |                                                                        Atteint |
+> | Le formulaire ne valide pas les cartes dont la question fait moins de 10 caractère ou réponse vide      |                                                                        Atteint |
 > | Si je clique sur annuler lors de la suppression, la carte n'est pas supprimée                           |                   Discutable, annuler n'existe pas, il faut cliquer sur escape |
 > | Sur la page de la carte, je clique sur supprimer et un popup apparait pour me demander de confirmer     |      Discutable, confirmation oui mais le "popup" est généré par le navigateur |
 > | Sur la page de la carte, je peux accèder au formulaire de modification en cliquant sur modifier         |                                                                        Atteint |
@@ -66,6 +53,53 @@ L'objectif final de ce projet est de fournir une application à l'aide du framew
 > | Sur la page de modification, la validation du form avec des données ok modifie la carte                 | Discutable, modification oui, mais impossible de valider avec la même question |
 
 ### Entrainement et mode de base
+
+> | Objectif                                                                                                                           |                                                 Bilan |
+> | :--------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------: |
+> | Sur la page showdeck, cliquer sur le bouton exercer affiche la page de lancement de l'exercice                                     |                                               Atteint |
+> | Sur la page de choix du mode en mode basique, commencer redirige sur une page qui affiche la première carte du deck                |                                               Atteint |
+> | Sur la page de la question, cliquer sur la carte affiche la réponse                                                                |                                               Atteint |
+> | Sur la même page réponse affichée, cliquer sur juste ou faux affiche la carte suivante                                             | Atteint, fonctionne aussi si la question est affichée |
+> | Sur la dernière carte, cliquer sur juste ou faux amène sur la page des statistiques avec un résultat conforme aux réponses données |                                              En cours |
+> | Depuis la page de fin, cliquer sur OK ramène à la page d’accueil                                                                   |                                        Non-implémenté |
+
+### Messages flash
+
+> | Objectif                                                          |          Bilan |
+> | :---------------------------------------------------------------- | -------------: |
+> | Lors de la création d’un deck, un message flash est affiché       | Non-implémenté |
+> | Lors de la modification d’un deck, un message flash est affiché   | Non-implémenté |
+> | Lors de la suppression d’un deck, un message flash est affiché    | Non-implémenté |
+> | Lors de la création d’une carte, un message flash est affiché     | Non-implémenté |
+> | Lors de la modification d’une carte, un message flash est affiché | Non-implémenté |
+> | Lors de la suppression d’une carte, un message flash est affiché  | Non-implémenté |
+
+### Inscription
+
+> | Objectif                                                                                                                                                        |          Bilan |
+> | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------: |
+> | Aller à l’adresse du site affiche la page de login                                                                                                              | Non-implémenté |
+> | Sur l'accueil, cliquer sur le bouton s’inscrire amène à la page inscription                                                                                     | Non-implémenté |
+> | Sur la page inscription, si le nom du user est rempli, que le mot de passe fait au moins 8 caractères et que le mot de passe est ok, le bouton d’envoi apparaît | Non-implémenté |
+> | Sur la page inscription avec un nom d’utilisateur déjà utilisé, cliquer sur OK amène sur la même page avec un message d’erreur                                  | Non-implémenté |
+> | Sur la page inscription avec un nom d’utilisateur valide, cliquer sur OK amène sur la page d’accueil connecté                                                   | Non-implémenté |
+
+> ### Connexion
+>
+> | Objectif                                                                              |          Bilan |
+> | :------------------------------------------------------------------------------------ | -------------: |
+> | Sur la page d'accueil, aller à l’adresse du site affiche la page de connexion         | Non-implémenté |
+> | Sur la page de connexion avec des infos invalides, cliquer OK ramène sur la même page | Non-implémenté |
+> | Sur la page de connexion avec des infos valides, presser OK amène à la page d’accueil | Non-implémenté |
+
+> ### Messages d’erreur précis
+>
+> | Objectif                                                                                                                                                        |                                         Bilan |
+> | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------: |
+> | Sur la page nouveau deck avec un titre déjà existant, presser OK affiche un message d’erreur et je reste sur la même page                                       | Atteint, le message est en anglais par contre |
+> | Sur la page nouveau deck avec une description de moins de 10 caractères, presser OK affiche un message d’erreur et je reste sur la même page                    | Atteint, le message est en anglais par contre |
+> | Sur la page nouvelle carte avec une question déjà existante, presser OK affiche un message d’erreur et je reste sur la même page                                | Atteint, le message est en anglais par contre |
+> | Sur la page nouvelle carte avec une question de moins de 10 caractères ou une réponse vide, presser OK affiche un message d’erreur et je reste sur la même page | Atteint, le message est en anglais par contre |
 
 ## Stratégie et utilisation de l'IA
 
