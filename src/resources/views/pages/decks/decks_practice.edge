@@ -10,23 +10,37 @@
       </p>
     </div>
 
-    <button id="next-btn">
-      Carte suivante
-  </button>
+    <button id="good-answer" class="next-btn">
+      Bonne réponse
+    </button>
+    <button id="wrong-answer" class="next-btn">
+      Mauvaise réponse
+    </button>
   </div>
 
   <script>
+    //variables et constantes utiles
     let currentIndex = 0;
+
+    const deckId = {{{ deck.id }}};
 
     const cards = {{{ JSON.stringify(deck.cards) }}};
 
     let showingAnswer = false;
 
-    const cardEl = document.getElementById("card");
+    const card = document.getElementById("card");
 
     const cardText = document.getElementById("card-text");
 
-    const nextBtn = document.getElementById("next-btn");
+    const wrongAnswer = document.getElementById("good-answer");
+
+    const goodAnswer = document.getElementById("wrong-answer");
+    //2 listes pour les stats - ajout des cartes ok
+
+    let goodAnswers = [];
+
+    let wrongAnswers = [];
+    //retourne la carte et affiche la réponse
 
     function toggleCard() {
       if (showingAnswer) {
@@ -36,19 +50,50 @@
       }
       showingAnswer = !showingAnswer;
     }
+    //passe à la carte suivante
 
     function nextCard() {
       currentIndex++;
       if (currentIndex >= cards.length) {
-        currentIndex = 0;
+        finishPractice();
+        return;
       }
       showingAnswer = false;
       cardText.textContent = cards[currentIndex].question;
     }
 
-    cardEl.addEventListener("click", toggleCard);
+    function goodStore() {
+      goodAnswers.push(cards[currentIndex]);
+      nextCard();
+    }
 
-    nextBtn.addEventListener("click", nextCard);
+    function wrongStore() {
+      goodAnswers.push(cards[currentIndex]);
+      nextCard();
+    }
+    //deck terminé -> appelle le routeur + passe les listes
+
+    async function finishPractice() {
+      const response = await fetch(`/decks/${deckId}/practice_results`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          goodAnswers: goodAnswers,
+          wrongAnswers: wrongAnswers
+        })
+      });
+      const data = await response.text();
+      document.body.innerHTML = data;
+    }
+    //events listeners
+
+    card.addEventListener("click", toggleCard);
+
+    goodAnswer.addEventListener("click", goodStore);
+
+    wrongAnswer.addEventListener("click", wrongStore);
   </script>
 
   <style>
@@ -106,7 +151,7 @@
     
     /* Bouton suivant */
     
-    #next-btn {
+    .next-btn {
       background: #1e3a5f;
       color: #e6e9ef;
       border: none;
@@ -118,12 +163,12 @@
       letter-spacing: 0.5px;
     }
     
-    #next-btn:hover {
+    .next-btn:hover {
       background: #2c4f7a;
       transform: translateY(-2px);
     }
     
-    #next-btn:active {
+    .next-btn:active {
       transform: translateY(0);
       background: #1b314f;
     }

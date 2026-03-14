@@ -104,4 +104,21 @@ export default class DecksController {
     const deck = await Deck.query().where('id', params.id).preload('cards').firstOrFail()
     return view.render('pages/decks/decks_practice.edge', { deck })
   }
+
+  /**
+   * Afficher les résultats de l'exercice
+   */
+  async show_results({ view, request, params }: HttpContext) {
+    //les listes de bonnes et mauvaises réponses
+    const goodAnswers = request.input('goodAnswers')
+    const wrongAnswers = request.input('wrongAnswers')
+    //retrouver le deck
+    const deck = await Deck.query().where('id', params.id).preload('cards').firstOrFail()
+
+    return view.render('pages/decks/decks_show_practice_results.edge', {
+      goodAnswers,
+      wrongAnswers,
+      deck,
+    })
+  }
 }
