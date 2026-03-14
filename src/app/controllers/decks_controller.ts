@@ -101,7 +101,7 @@ export default class DecksController {
    * Pratiquer un deck
    */
   async practice({ view, params }: HttpContext) {
-    const deck = await await Deck.query().where('id', params.id).preload('cards')
+    const deck = await Deck.query().where('id', params.id).preload('cards').firstOrFail()
     return view.render('pages/decks/decks_practice.edge', { deck })
   }
 }

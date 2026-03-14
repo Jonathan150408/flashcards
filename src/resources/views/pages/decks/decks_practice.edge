@@ -1,54 +1,131 @@
 @layout('layouts/main')
-
-  @section('content')
-    <div class="container mx-auto px-4 py-8">
-      <h1 class="text-3xl font-bold mb-6">
-        Pratiquer le deck : {{ deck.name }}
-      </h1>
-
-      <div class="flex flex-col items-center justify-center min-h-96">
-        <div
-          id="card"
-          class="bg-white shadow-lg rounded-lg p-8 cursor-pointer text-center max-w-md w-full"
-          onclick="toggleCard()"
-        >
-          <p id="card-text" class="text-xl">
-            {{ deck.cards[0].question }}
-          </p>
-        </div>
-
-        <button
-          id="next-btn"
-          class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onclick="nextCard()"
-        >
-          Carte suivante
-      </button>
-      </div>
+  <h3>
+    Pratiquer le deck : {{ deck.name }} {{--  ça s'affiche, donc deck est bien transmis  --}}
+  </h3>
+  <div class="container">
+    <div id="card">
+      <p id="card-text">
+        {{ deck.cards[0].question }}
+        {{--  ça s'affiche  --}}
+      </p>
     </div>
 
-    <script>
-      let currentIndex = 0;
+    <button id="next-btn">
+      Carte suivante
+  </button>
+  </div>
 
-      const cards = @json(deck.cards);
+  <script>
+    let currentIndex = 0;
 
-      let showingAnswer = false;
+    const cards = {{{ JSON.stringify(deck.cards) }}};
 
-      function toggleCard() {
-        const cardText = document.getElementById("card-text");
-        if (showingAnswer) {
-          cardText.textContent = cards[currentIndex].question;
-        } else {
-          cardText.textContent = cards[currentIndex].answer;
-        }
-        showingAnswer = !showingAnswer;
+    let showingAnswer = false;
+
+    const cardEl = document.getElementById("card");
+
+    const cardText = document.getElementById("card-text");
+
+    const nextBtn = document.getElementById("next-btn");
+
+    function toggleCard() {
+      if (showingAnswer) {
+        cardText.textContent = cards[currentIndex].question;
+      } else {
+        cardText.textContent = cards[currentIndex].answer;
       }
+      showingAnswer = !showingAnswer;
+    }
 
-      function nextCard() {
-        currentIndex = (currentIndex + 1) % cards.length;
-        showingAnswer = false;
-        document.getElementById("card-text").textContent = cards[currentIndex].question;
+    function nextCard() {
+      currentIndex++;
+      if (currentIndex >= cards.length) {
+        currentIndex = 0;
       }
-    </script>
-  @endsection
+      showingAnswer = false;
+      cardText.textContent = cards[currentIndex].question;
+    }
+
+    cardEl.addEventListener("click", toggleCard);
+
+    nextBtn.addEventListener("click", nextCard);
+  </script>
+
+  <style>
+    /* Titre */
+    
+    h3 {
+      text-align: center;
+      color: #e6e9ef;
+      margin-top: 2rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Conteneur principal */
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    /* Carte */
+    
+    #card {
+      background: #0f1a2b;
+      color: #e6e9ef;
+      width: 380px;
+      min-height: 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 14px;
+      cursor: pointer;
+      border: 1px solid #2a3b55;
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.3s ease;
+    }
+    
+    #card:hover {
+      transform: translateY(-4px);
+      background: #152238;
+      box-shadow: 0 0 25px rgba(70, 120, 200, 0.45);
+    }
+    
+    /* Texte de la carte */
+    
+    #card-text {
+      font-size: 1.3rem;
+      line-height: 1.5;
+    }
+    
+    /* Bouton suivant */
+    
+    #next-btn {
+      background: #1e3a5f;
+      color: #e6e9ef;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: 0.25s ease;
+      letter-spacing: 0.5px;
+    }
+    
+    #next-btn:hover {
+      background: #2c4f7a;
+      transform: translateY(-2px);
+    }
+    
+    #next-btn:active {
+      transform: translateY(0);
+      background: #1b314f;
+    }
+  </style>
 @end
