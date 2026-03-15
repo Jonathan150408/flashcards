@@ -31,8 +31,9 @@ router
   .as('decks_practice_mode') //choix du mode
 router.get('/decks/:id/practice', [DecksController, 'practice']).as('decks_practice') //exercice
 //montrer les résultats de l'utilisateur
-router.post('/decks/:id/practice_results', [DecksController, 'show_results'])
-// .as('decks_show_practice_results')
+router
+  .post('/decks/:id/practice_results', [DecksController, 'show_results'])
+  .as('decks_show_practice_results')
 
 //--------------- partie pour les cartes ---------------
 router.get('/cards/:id/show', [CardsController, 'show']).as('cards_show')

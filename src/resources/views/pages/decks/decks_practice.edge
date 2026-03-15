@@ -1,12 +1,11 @@
 @layout('layouts/main')
   <h3>
-    Pratiquer le deck : {{ deck.name }} {{--  ça s'affiche, donc deck est bien transmis  --}}
+    Pratiquer le deck : {{ deck.name }}
   </h3>
   <div class="container">
     <div id="card">
       <p id="card-text">
         {{ deck.cards[0].question }}
-        {{--  ça s'affiche  --}}
       </p>
     </div>
 
@@ -16,6 +15,18 @@
     <button id="wrong-answer" class="next-btn">
       Mauvaise réponse
     </button>
+
+    {{--  formulaire caché pour le renvoi de l'utilisateur  --}}
+    <form
+      id="results-form"
+      method="POST"
+      action="{{ route('decks_show_practice_results', { id: deck.id }) }}"
+    >
+      {{ csrfField() }}
+      <input class="hidden" type="number" name="goodAnswers" id="goodAnswersInput" />
+      <input class="hidden" type="number" name="wrongAnswers" id="wrongAnswersInput" />
+      <button class="hidden" type="submit" class="start-button"></button>
+    </form>
   </div>
 
   <script>
@@ -32,14 +43,14 @@
 
     const cardText = document.getElementById("card-text");
 
-    const wrongAnswer = document.getElementById("good-answer");
+    const goodAnswer = document.getElementById("good-answer");
 
-    const goodAnswer = document.getElementById("wrong-answer");
-    //2 listes pour les stats - ajout des cartes ok
+    const wrongAnswer = document.getElementById("wrong-answer");
+    //2 listes pour les stats
 
-    let goodAnswers = [];
+    let goodAnswers = 0;
 
-    let wrongAnswers = [];
+    let wrongAnswers = 0;
     //retourne la carte et affiche la réponse
 
     function toggleCard() {
@@ -61,31 +72,24 @@
       showingAnswer = false;
       cardText.textContent = cards[currentIndex].question;
     }
+    // Ajoute la carte à la liste de réponses justes
 
     function goodStore() {
-      goodAnswers.push(cards[currentIndex]);
+      goodAnswers++;
       nextCard();
     }
+    // Ajoute la carte à la liste de réponses fausses
 
     function wrongStore() {
-      goodAnswers.push(cards[currentIndex]);
+      wrongAnswers++;
       nextCard();
     }
     //deck terminé -> appelle le routeur + passe les listes
 
-    async function finishPractice() {
-      const response = await fetch(`/decks/${deckId}/practice_results`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          goodAnswers: goodAnswers,
-          wrongAnswers: wrongAnswers
-        })
-      });
-      const data = await response.text();
-      document.body.innerHTML = data;
+    function finishPractice() {
+      document.getElementById("goodAnswersInput").value = JSON.stringify(goodAnswers);
+      document.getElementById("wrongAnswersInput").value = JSON.stringify(wrongAnswers);
+      document.getElementById("results-form").submit();
     }
     //events listeners
 
@@ -171,6 +175,10 @@
     .next-btn:active {
       transform: translateY(0);
       background: #1b314f;
+    }
+    
+    .hidden {
+      display: none;
     }
   </style>
 @end

@@ -114,7 +114,6 @@ export default class DecksController {
     const wrongAnswers = request.input('wrongAnswers')
     //retrouver le deck
     const deck = await Deck.query().where('id', params.id).preload('cards').firstOrFail()
-
     return view.render('pages/decks/decks_show_practice_results.edge', {
       goodAnswers,
       wrongAnswers,
