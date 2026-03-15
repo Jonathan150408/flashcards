@@ -7,9 +7,9 @@ import { cardValidator } from '#validators/card'
 
 export default class CardsController {
   /**
-   * Display a list of resource
+   * Display a list of ressource
    */
-  async index({ view, params }: HttpContext) {}
+  async index({}: HttpContext) {}
 
   /**
    * Display form to create a new record
