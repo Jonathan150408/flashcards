@@ -1,45 +1,550 @@
+/* global */
 :root {
-  --primary-color: #4f5ea2;
-  --secondary-color: #425cccff;
-  --tird-color: #6e79a8;
-  --fourth-color: #3f414d;
-  --fifth-color: #292b33;
-}
-* {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-html,
-body {
-  height: 100%;
-  width: 100%;
-  background-color: black;
-}
-h1 {
-  text-align: center;
-  font-family: sans-serif;
-  background-color: var(--secondary-color);
-  color: white;
-  padding: 10px 0;
-  top: 0px;
-  position: relative;
+  --color-bg: #0b0c10;
+  --color-surface: #141928;
+  --color-primary: #4f5ea2;
+  --color-primary-variant: #425cccff;
+  --color-muted: #6e79a8;
+  --color-ink: #f5f6ff;
+  --radius: 0.375rem;
+  --gap: 1rem;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
+/* Reset + sensible defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* Layout utilities */
+/* decks_practice.edge, decks_show_practice_results.edge */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: min(100%, 1024px);
+  margin: 0 auto;
+  padding: 0 var(--gap);
+}
+
+/* unused */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 16px;
+}
+
+/* Typography */
+/* global */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* global */
+h1 {
+  padding: var(--gap) 0;
+  text-align: center;
+  background: var(--color-primary-variant);
+  color: var(--color-ink);
+}
+
+/* Navigation */
+/* header.edge */
 nav {
-  color: white;
-  background-color: var(--primary-color);
-  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-primary);
+  color: var(--color-ink);
+  padding: 0.75rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+/* header.edge */
+nav a {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer */
+/* footer.edge */
+footer {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  background: var(--color-primary-variant);
+  color: var(--color-ink);
+  text-align: center;
+}
+
+/* Utility helpers */
+/* decks_show_practice_results.edge */
+.text-center {
+  text-align: center;
+}
+
+/* unused */
+.bg-surface {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* decks_practice.edge, decks_show_practice_results.edge */
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 1.5rem;
+}
+
+.mt-3 {
+  margin-top: 2.5rem;
+}
+
+/* unused */
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 2.5rem;
+}
+
+/* Component helpers */
+
+/* Headings */
+/* multiple pages */
+h2,
+h3 {
+  color: var(--color-ink);
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+/* Cards */
+/* cards_show.edge */
+.card,
+a.card,
+.carte {
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius);
+  padding: 1rem;
+  color: var(--color-ink);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.card:hover,
+a.card:hover,
+.carte:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* home.edge */
+.card-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+/* decks_show.edge */
+.card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  color: var(--color-ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 1rem;
+}
+
+/* decks_show.edge */
+.card-row__question,
+.card-row__answer {
+  margin: 0;
+  text-align: left;
+}
+
+/* cards_show.edge */
+.carte {
+  background: var(--color-surface);
+  text-decoration: none;
+  color: var(--color-ink);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.carte:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* cards_show.edge */
+.carte .answer {
+  display: none;
+}
+
+.carte.flipped .question {
+  display: none;
+}
+
+.carte.flipped .answer {
+  display: block;
+}
+
+/* Forms */
+/* global */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* unused */
+.form-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem 2.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  width: fit-content;
+  margin: 3rem auto;
+}
+
+/* decks_practice_menu.edge */
+#modeForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+
+  background: #0f1a2b; /* bleu très foncé */
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  width: fit-content;
+  margin: 3rem auto;
+}
+
+/* decks_practice_menu.edge */
+#modeType {
+  background: #152238;
+  color: #e6e9ef;
+  border: 1px solid #2a3b55;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* decks_practice_menu.edge */
+#modeType:hover {
+  border-color: #3f5a88;
+}
+
+/* decks_practice_menu.edge */
+.start-container {
   width: 100%;
-  gap: 20px;
   display: flex;
   justify-content: center;
 }
-footer {
-  position: fixed;
-  bottom: 0;
-  background-color: var(--secondary-color);
-  color: white;
-  padding: 10px 0;
+
+/* decks_practice_menu.edge */
+.start-button {
+  background: #1e3a5f;
+  color: #e6e9ef;
+  border: none;
+  padding: 0.7rem 1.6rem;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+  letter-spacing: 0.5px;
+}
+
+/* decks_practice_menu.edge */
+.start-button:hover {
+  background: #2c4f7a;
+  transform: translateY(-2px);
+}
+
+/* decks_practice_menu.edge */
+.start-button:active {
+  transform: translateY(0);
+  background: #1b314f;
+}
+
+/* cards_create.edge, cards_edit.edge, decks_create.edge, decks_edit.edge */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-ink);
+}
+
+/* cards_create.edge, cards_edit.edge, decks_create.edge, decks_edit.edge */
+.form-error {
+  color: #f77373;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Buttons */
+/* multiple pages */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  background: var(--color-primary);
+  color: var(--color-ink);
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
+}
+
+.btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* multiple pages */
+.btn--secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn--success {
+  background: #7ed321;
+  color: #000;
+}
+
+.btn--danger {
+  background: #c03939;
+}
+
+.btn--outline {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn--block {
   width: 100%;
+}
+
+/* Layout helpers */
+
+/* home.edge */
+.cardStyle,
+.btn--fab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 256px;
+  height: 256px;
+  border: 1px lightskyblue solid;
+  border-radius: 16px;
+  text-align: center;
+  padding: 16px;
+}
+
+/* home.edge */
+.btn--fab {
+  font-size: 2.5rem;
+}
+
+/* decks_show.edge */
+section.deck {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* decks_show.edge */
+.cartes {
+  grid-column: 2;
+}
+
+/* cards_show.edge, decks_show.edge */
+.updateOrDelete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+/* cards_show.edge, decks_show.edge */
+.updateOrDelete .btn {
+  width: 260px;
+}
+
+/* Deck cards listing */
+
+/* Layout helpers */
+/* cards_show.edge */
+.page-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  min-height: 75vh;
+}
+
+/* Practice flow */
+/* decks_practice.edge */
+#card {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  width: min(380px, 90vw);
+  min-height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 14px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.3s ease;
+}
+
+/* decks_practice.edge */
+#card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(70, 120, 200, 0.45);
+}
+
+/* decks_practice.edge */
+#card-text {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+/* Practice section */
+/* decks_show.edge */
+#exercer {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+/* Utility */
+/* decks_practice.edge */
+.hidden {
+  display: none;
 }

@@ -1,5 +1,5 @@
 @component('components/layout', { title: 'Cartes' })
-  <main>
+  <main class="page-center">
     <div class="carte">
       <h2 class="question">
         Question
@@ -16,12 +16,12 @@
     </div>
 
     <div class="updateOrDelete">
-      <a href="{{ route('decks_show', { id: card.deckId}) }}" class="green">Ok</a>
-      <a href="{{ route('cards_edit', { id: card.id }) }}" class="orange">Modifier la carte</a>
+      <a href="{{ route('decks_show', { id: card.deckId}) }}" class="btn btn--success">Ok</a>
+      <a href="{{ route('cards_edit', { id: card.id }) }}" class="btn btn--secondary">Modifier la carte</a>
       <a
         href="#"
         onclick="if(confirm('Êtes-vous sûr de vouloir supprimer cette carte ?')) { window.location.href = '{{ route('cards_destroy', { id: card.id }) }}'; }"
-        class="red"
+        class="btn btn--danger"
       >Supprimer la carte</a>
     </div>
   </main>
@@ -33,82 +33,4 @@
       });
     });
   </script>
-  <style>
-    main {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 64px;
-      min-height: 100vh;
-    }
-    
-    .carte {
-      background-color: black;
-      text-decoration: none;
-      color: white;
-      border: 2px solid white;
-      border-radius: 20px;
-      padding: 10px;
-      width: 200px;
-      height: 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    
-    .updateOrDelete {
-      justify-self: end;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 32px;
-    }
-    
-    .updateOrDelete a {
-      text-decoration: none;
-      height: 48px;
-      width: 270px;
-      border: 1px solid white;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    }
-    
-    .red {
-      background-color: red;
-    }
-    
-    .orange {
-      background-color: orange;
-    }
-    
-    .green {
-      color: black;
-      background-color: lightgreen;
-    }
-    
-    /* retourner la carte */
-    
-    .carte .answer {
-      display: none;
-    }
-    
-    .carte.flipped .question {
-      display: none;
-    }
-    
-    .carte.flipped .answer {
-      display: block;
-    }
-    
-    .carte {
-      cursor: pointer;
-    }
-  </style>
 @endcomponent

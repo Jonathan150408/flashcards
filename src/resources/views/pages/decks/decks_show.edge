@@ -6,11 +6,11 @@
     <section class="deck">
       <div class="cartes">
         @each((card, index) in deck.cards)
-          <a href="{{ route('cards_show', { id: card.id }) }}" class="carte">
-            <p class="question">
+          <a href="{{ route('cards_show', { id: card.id }) }}" class="card-row">
+            <p class="card-row__question">
               {{ card.question }}
             </p>
-            <p class="answer">
+            <p class="card-row__answer">
               {{ card.answer }}
             </p>
           </a>
@@ -19,97 +19,17 @@
       </div>
 
       <div class="updateOrDelete">
-        <a href="{{ route('cards_create', { deckId: deck.id }) }}" class="green">Ajouter une carte</a>
-        <a href="{{ route('decks_edit', { id: deck.id }) }}" class="orange">Modifier le deck</a>
+        <a href="{{ route('cards_create', { deckId: deck.id }) }}" class="btn btn--success">Ajouter une carte</a>
+        <a href="{{ route('decks_edit', { id: deck.id }) }}" class="btn btn--secondary">Modifier le deck</a>
         <a
           href="#"
           onclick="if(confirm('Êtes-vous sûr de vouloir supprimer ce deck ?')) { window.location.href = '{{ route('decks_destroy', { id: deck.id }) }}'; }"
-          class="red"
+          class="btn btn--danger"
         >Supprimer le deck</a>
       </div>
     </section>
     <section id="exercer">
-      <a href="{{ route('decks_practice_mode', { id: deck.id }) }}">S'exercer</a>
+      <a class="btn btn--primary" href="{{ route('decks_practice_mode', { id: deck.id }) }}">S'exercer</a>
     </section>
   </main>
-  <style>
-    #exercer {
-      text-align: center;
-      margin: 48px;
-    }
-    
-    #exercer a {
-      border: 1px solid white;
-      text-decoration: none;
-      padding: 24px;
-      background-color: lightblue;
-      border-radius: 20px;
-      color: black;
-    }
-    
-    h2 {
-      text-align: center;
-      color: white;
-      margin: 20px 0;
-    }
-    
-    .deck {
-      display: grid;
-      grid-template-columns: 1fr 5fr 1fr;
-    }
-    
-    .cartes {
-      grid-column: 2;
-    }
-    
-    .carte {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin: 16px;
-      color: white;
-      border-bottom: 1px solid white;
-      text-decoration: none;
-      padding-bottom: 16px;
-    }
-    
-    .question,
-    .answer {
-      text-align: left;
-    }
-    
-    .updateOrDelete {
-      grid-column: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 32px;
-    }
-    
-    .updateOrDelete a {
-      text-decoration: none;
-      height: 48px;
-      width: 270px;
-      border: 1px solid white;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin-right: 64px;
-    }
-    
-    .red {
-      background-color: red;
-    }
-    
-    .orange {
-      background-color: orange;
-    }
-    
-    .green {
-      background-color: lightgreen;
-      color: black;
-    }
-  </style>
 @endcomponent
