@@ -10,6 +10,12 @@ L'objectif final de ce projet est de fournir une application à l'aide du framew
 
 ## Marche à suivre - installation et utilisation
 
+> Afin de faire fonctionner l'application, il faut commencer par la télécharger (dizziper le zip si nécessaire ou cloner à l'aide de GitHub). Atteingnez ensuite le dossier _src_ et ouvrez un terminal. Lancez la commande `npm i`.
+> <br> Pendant ce temps, vous pouvez déjà mettre en place l'environnement Docker. Il vous suffira de trouver le dossier _Docker_MySQL_, ouvrir un terminal et lancer la commande `docker compose up -d`. Cela créera le container et le lancera automatiquement.
+> <br> En même temps, nous pouvons mettre en place le fichier **.env**, vous trouverez un fichier **.env.exemple** dans le dossier _src_. Il vous suffira alors de supprimer l'extension _.exemple_ afin de renommer le fichier en _.env_.
+> <br> Le permier terminal (celui où vous avez fait `npm i`) devrait avoir fini, dans ce même terminal lancez la commande `node ace make:key`, puis `node ace migration:refresh`. Ces commandes vont, dans l'ordre, générer une clé d'accès à la db, pui remplir la base de données avec des données de test/exemple.
+> <br> Dernière étape : dans le terminal du dossier _src_, lancez la commande `npm run dev`. Cela va lancer le serveur et vous pourrez apprécier l'application à [l'adresse suivante](http://localhost:3333/). (http://localhost:3333/ au cas où le lien ne fonctionnerait pas)
+
 ## Bilan - résultats vs objectifs
 
 > De manière générale, ce ne fut pas un franc succès, mais ce ne fut pas non plus un échec. J'ai compris comment monter - développer - utiliser Adonis pour mon projet, mais je dois admettre que l'IA m'a été bien plus utile que je ne l'aurais voulu durant ce projet.
