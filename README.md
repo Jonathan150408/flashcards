@@ -1,8 +1,37 @@
 # Flashcards
 
-## Objectif pédagogiques et produits
+## Objectifs
 
-L'objectif final de ce projet est de fournir une application à l'aide du framework Adonis. L'application permettra de créer, réviser et sauvegarder des decks de flashcards utiles à l'apprentissage. Ce projet vise surtout à augmenter / travailler les compétences avec le célèbre framework Adonis.
+### Pédagogiquement
+
+> Ce projet vise surtout à augmenter et travailler les compétences avec le célèbre framework Adonis. Au cours de ce projet, nous avons accès à de la documentaion fournie par l'ETML et à la documentation et ligne comprenant donc les IAs, leur utilisation au cous de ce projet est détaillée dans le chapitre **Stratégie et utilisation de l'IA**.
+> <br> Il sera donc vital de comprendre le fonctionnement de Adonis et l'application du schéma MVC.
+
+#### Schema MVC
+
+> Le schema _Model-View-Controller_ est une représentation visuelle du fonctionnement de l'application.
+> <br><br>Les _Models_ sont des fichiers .ts et sont propres à chaque table de la base de données (pour MySQL en tout cas). Une table possède forcément un modèle. Les modèles sont utilisés lors de la création de la base de données et servent à montrer au gestionnaire de db à quoi ressemble une table. Les modèles déclarent les colonnes de la table et leur spécificités (UNIQUE, PRIMARY, NOT-NULL, ...). On utilise aussi les modèles dans les controlleurs afin de récupérer/insérer/supprimer/modifier des données (opérations CRUD).
+> <br><br>Les _Views_ sont des fichiers contenant du HTML (voir CSS ou JS) qui sera affiché lors du rendu de la page. Ces fichiers sont intérpretés par le gestionnaire de template edge. On peut définir les views comme étant le rendu visuel des pages. Les fichiers .edge sont _combinables_, en effet dans ce projet, par exemple, on trouvera un fichier pour le footer, un pour le header, et plein d'autres pour les différente pages.
+> <br><br>Enfin les _Controllers_ sont des fichiers en TypeScript et servent à lier le routeur, la récupération des données et le rendu visuel. Un controlleur dispose de plein de méthodes, en voici une que dont on va parler :
+>
+> ```ts
+>   async index({ view }: HttpContext) { //cette méthode s'appelle index
+>    const decks = await Deck.query().orderBy('id', 'asc').preload('cards') //ici on va chercher des données en passant par le modèle de deck
+>    return view.render('pages/home.edge', { decks }) //ici on retourne un rendu visuel en se servant des views (dont home.edge citée explicitement)
+>  }
+> ```
+>
+> Comme nous le voyons et l'expliquent les commentaires ci-dessus, une méthode d'un controlleur fait effectivement le lien entre les données et le rendu. Mais le routeur dans tout ça ? Et bien le routeur est celui qui appelle le controlleur. Comme ceci :
+>
+> ```ts
+> router.get("/", [DecksController, "index"]).as("home");
+> ```
+>
+> Le routeur indique la route (/), le controlleur (DecksController), la méthode du controlleur (index) et le "surnom" de la route (home)
+
+### Du produit
+
+> L'objectif final de ce projet est de fournir une application à l'aide du framework Adonis. L'application permettra de gérer des decks de flashcards utiles à l'apprentissage. Un utilisateur pourra donc créer, modifier, supprimer et réviser ses decks. De plus l'utilisateur aura accès aux cartes de chaque deck et pourra donc les gérer de la même manière (CRUD). L'application, étant liée à une base de données verra ses decks et cartes sauvegardés entre chaque session. Dans notre cas, l'application de départ contient 2 decks et leurs cartes.
 
 ## User Stories
 
@@ -66,8 +95,8 @@ L'objectif final de ce projet est de fournir une application à l'aide du framew
 > | Sur la page de choix du mode en mode basique, commencer redirige sur une page qui affiche la première carte du deck                |                                               Atteint |
 > | Sur la page de la question, cliquer sur la carte affiche la réponse                                                                |                                               Atteint |
 > | Sur la même page réponse affichée, cliquer sur juste ou faux affiche la carte suivante                                             | Atteint, fonctionne aussi si la question est affichée |
-> | Sur la dernière carte, cliquer sur juste ou faux amène sur la page des statistiques avec un résultat conforme aux réponses données |                                              En cours |
-> | Depuis la page de fin, cliquer sur OK ramène à la page d’accueil                                                                   |                                        Non-implémenté |
+> | Sur la dernière carte, cliquer sur juste ou faux amène sur la page des statistiques avec un résultat conforme aux réponses données |                                               Atteint |
+> | Depuis la page de fin, cliquer sur OK ramène à la page d’accueil                                                                   |                                               Atteint |
 
 ### Messages flash
 
